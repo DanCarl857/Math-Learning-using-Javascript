@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Math-Learning Platform</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	</head>
+	<body onload=mainFunction()>
+		<div class="container" id="body">
+
+			<div class="row" id="page_heading">
+				<div class="col-md-6" id="scoreTag">
+					<span>SCORE :</span> 
+					<input type="text" size="3" id="score" placeholder="  ?" disabled><span> / 20 points</span>
+				</div>
+				
+				<div class="col-md-6" id="level">
+					<span>LEVEL :</span><span> 2- Advanced Beginner</span>
+				</div>
+			</div>
+
+			<div class="row" id="main_body">
+				<div class="col-md-12" id="main_event">
+					<div class="row" id="question">
+						<div class="col-md-2 large_fonts">
+							<span style="border: 2px solid grey;" id="first_op"></span>
+						</div>
+						<div class="col-md-2 large_fonts">
+							<span style="border: 2px solid grey;" id="operator"></span>
+						</div>
+						<div class="col-md-2 large_fonts">
+							<span style="border: 2px solid grey;" id="quest"></span>
+						</div>
+						<div class="col-md-2 large_fonts">
+							<span id="eq" style="border: 1px solid grey;"> =</span>
+							<span style="border: 2px solid red;" id="ans"></span>
+						</div>
+					</div>
+
+
+					<div class="row" id="ans" style="font-size: 35px; text-align: center;margin-bottom: 30px;margin-top: 40px;">
+						<span style="position: relative; left: 5%;">Choose an answer: </span><br>
+						  <button type="button" class="btn btn-info btn-lg" style="margin-left: 10px" data-toggle="modal" data-target="#aModal">A</button>
+
+						  <!-- Modal -->
+						<div id="aModal" class="modal fade" role="dialog" style="font-size: 20px;">
+							<div class="modal-dialog">
+								<!-- Modal content -->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h3 class="modal-title">Math-Learning Platform</h3>
+									</div>
+									<div class="modal-body">
+										You choose <span style="color: blue">A.</span> Submit as answer?
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary" data-dismiss="modal">No, Changed my Mind</button>
+										<button type="button" class="btn btn-warning" id="submitMeA">Yes, Submit</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						  <input type="text" size="3" placeholder="  3" disabled id="A" name="A">
+						  <button type="button" class="btn btn-info btn-lg" style="margin-left: 10px" data-toggle="modal" data-target="#bModal">B</button>
+
+						   <!-- Modal -->
+						<div id="bModal" class="modal fade" role="dialog" style="font-size: 20px;">
+							<div class="modal-dialog">
+								<!-- Modal content -->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h3 class="modal-title">Math-Learning Platform</h3>
+									</div>
+									<div class="modal-body">
+										You choose <span style="color: blue">B.</span> Submit as answer?
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary" data-dismiss="modal">No, Changed my Mind</button>
+										<button type="button" class="btn btn-warning" id="submitMeB">Yes, Submit</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						  <input type="text" size="3"  placeholder="  6" disabled id="B" name="B">
+						  <button type="button" class="btn btn-info btn-lg" style="margin-left: 10px" data-toggle="modal" data-target="#cModal">C</button>
+
+						  <!-- Modal -->
+						<div id="cModal" class="modal fade" role="dialog" style="font-size: 20px;">
+							<div class="modal-dialog">
+								<!-- Modal content -->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h3 class="modal-title">Math-Learning Platform</h3>
+									</div>
+									<div class="modal-body">
+										You choose <span style="color: blue">C.</span> Submit as answer?
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary" data-dismiss="modal">No, Changed my Mind</button>
+										<button type="button" class="btn btn-warning" id="submitMeC">Yes, Submit</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						  <input type="text" size="3" placeholder="  7" disabled id="C" name="C">
+						  <button type="button" class="btn btn-info btn-lg" style="margin-left: 10px" data-toggle="modal" data-target="#dModal">D</button>
+
+						  <!-- Modal -->
+						<div id="dModal" class="modal fade" role="dialog" style="font-size: 20px;">
+							<div class="modal-dialog">
+								<!-- Modal content -->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h3 class="modal-title">Math-Learning Platform</h3>
+									</div>
+									<div class="modal-body">
+										You choose <span style="color: blue">D.</span> Submit as answer?
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary" data-dismiss="modal">No, Changed my Mind</button>
+										<button type="button" class="btn btn-warning" id="submitMeD">Yes, Submit</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						  <input type="text" size="3" placeholder="  8" disabled id="D" name="D">
+				</div>
+			</div>
+
+			<div class="row" id="page_bottom" style="font-size: 35px;">
+				<span style="margin-left: 80px"><button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#closeModal">EXIT</button></span>
+
+				<!-- Modal -->
+				<div id="closeModal" class="modal fade" role="dialog" style="font-size: 20px;">
+					<div class="modal-dialog">
+						<!-- Modal content -->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h3 class="modal-title">Math-Learning Platform</h3>
+							</div>
+							<div class="modal-body">
+								<strong>GAME OVER</strong><br />
+								Your Score: <span id="endScore"></span><br />
+								Grade: <span id="gradeScore"></span><br />
+								Will you <span style="color: rgb(46, 200, 102)">Play Again</span> or <span style="color: red">exit</span>?
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success" id="confirmNot" data-dismiss="modal">No, Play Again</button>
+								<button type="button" class="btn btn-danger" id="finito">Yes, Exit</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<span style="margin-left: 80px"><button type="button" data-toggle="modal" data-target="#skipModal" class="btn btn-warning btn-lg">Skip this question</button></span><span style="margin-left: 10px">
+
+				<!-- Modal -->
+				<div id="skipModal" class="modal fade" role="dialog" style="font-size: 20px">
+					<div class="modal-dialog">
+						<!-- Modal content -->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h3 class="modal-title">Math-Learning Platform</h3>
+							</div>
+							<div class="modal-body">
+								Are you sure u want to skip this question?
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-info" data-dismiss="modal">No, Return to Question</button>
+								<button type="button" class="btn btn-primary" id="skip_quest">Yes, Skip</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<input type="text" size="3" placeholder="  ?" disabled id="skipQuest"></span><span> / 5</span>
+				<span style="margin-left: 80px"><button type="button" data-toggle="modal" data-target="#genModal" class="btn btn-success btn-lg">Generate New Question</button></span><span style="margin-left: 10px"><input type="text" size="3" placeholder="  ?" disabled id="generateQ"></span><span> / 3</span>
+
+				<!-- Modal -->
+				<div id="genModal" class="modal fade" role="dialog" style="font-size: 20px">
+					<div class="modal-dialog">
+						<!-- Modal content -->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h3 class="modal-title">Math-Learning Platform</h3>
+							</div>
+							<div class="modal-body">
+								Are you sure u want to generate a new question? <br />
+								This will cost you 2 points!!
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary" data-dismiss="modal">No, Return to Question</button>
+								<button type="button" class="btn btn-warning" id="generate_question">Yes, Generate New</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!--<span style="margin-left: 60px"><button type="button" id="submitBtn" class="btn btn-primary btn-lg">Submit Answer</button></span> -->
+			</div>
+			<div id="embed"></div>
+		</div>
+
+
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+
+			var c_ans = "";
+			var score = 0;
+			var num_question = 0;
+			var skips = 0;
+			var generated = 0;
+
+			mainFunction = function(){
+				getElem('score').value = score;
+				num_question = num_question + 1;
+
+				console.log("Number of questions: " + num_question);
+
+				// exit modal info
+				getElem('endScore').innerHTML = score;
+
+				if(score > 0 && score <= 5)
+					getElem('gradeScore').innerHTML = "F - Very Poor";
+				else if(score > 5 && score <= 10)
+					getElem('gradeScore').innerHTML = "C - Fair";
+				else if(score > 10 && score <= 15)
+					getElem('gradeScore').innerHTML = "B - Good";
+				else if(score > 15 && score <= 19)
+					getElem('gradeScore').innerHTML = "A - Very Good";
+				else if(score == 20)
+					getElem('gradeScore').innerHTML = "A+ - Excellent";
+				else
+					getElem('gradeScore').innerHTML = "Nothing Yet";
+
+				// skip and generated info
+				getElem('skipQuest').value = skips;
+				getElem('generateQ').value = generated;
+
+
+				var first_operand = Math.floor((Math.random() * 10) + 0);
+				var second_operand = Math.floor((Math.random() * 10) + 0);
+
+				var ops = ["+", "-", "/", "*"];
+				var op = ops[Math.floor((Math.random() * 3) + 0)];
+
+				// put question up on screen
+				getElem('first_op').innerHTML = first_operand;
+				getElem('operator').innerHTML = op;
+				getElem('quest').innerHTML = second_operand;
+				//getElem('ans').innerHTML = "?";
+
+				var expr = String(first_operand);
+				expr = expr + String(op);
+				expr = expr + String(second_operand);
+
+				console.log(expr);
+
+				var ans = eval(expr);
+
+
+				// if answer is not a floating point or an integer generate a new one
+				if(isFloat(ans) || isInt(ans)){
+
+					console.log(ans);
+
+					//answers
+					var possible = "ABCD";
+					c_ans = possible.charAt(Math.floor(Math.random() * possible.length));
+
+					console.log(c_ans);
+
+					switch(c_ans){
+						case 'A':
+							getElem('A').value = ans.toFixed(1);
+							(getElem('B').value).toFixed(1) += ans + 1;
+							(getElem('C').value).toFixed(1) += ans + 1;
+							(getElem('D').value).toFixed(1) += ans + 1;
+							break;
+						case 'B':
+							getElem('B').value = ans.toFixed(1);
+							(getElem('A').value).toFixed(1) += ans + 1;
+							(getElem('C').value).toFixed(1) += ans + 1;
+							(getElem('D').value).toFixed(1) += ans + 1;
+							break;
+						case 'C':
+							getElem('C').value = ans.toFixed(1);
+							(getElem('B').value).toFixed(1) += ans + 1;
+							(getElem('A').value).toFixed(1) += ans + 1;
+							(getElem('D').value).toFixed(1) += ans + 1;
+							break;
+						case 'D':
+							getElem('D').value = ans.toFixed(1);
+							(getElem('B').value).toFixed(1) += ans + 1;
+							(getElem('C').value).toFixed(1) += ans + 1;
+							(getElem('A').value).toFixed(1) += ans + 1;
+							break;
+					}
+
+					if(num_question >= 20){
+						closeTab();
+					}
+				} else {
+					mainFunction();
+				}
+			}
+
+			function isInt(n){
+				return n === +n && n !== (n|0);
+			}
+
+			function isFloat(n){
+				return n === +n && n === (n|0);
+			}
+
+			function check(score){
+				if(num_question == 20){
+					$('#closeModal').modal('show');
+				}else{
+					return true;
+				}
+			}
+
+
+			// simplify typing to get element
+			function getElem(e){
+				return document.getElementById(e);
+			}
+
+			
+			var closeAll = getElem('finito');
+			//closeAll.onclick = window.close();
+			// this doesn't work on firefox and some versions of chrome
+			closeAll.onclick = setTimeout(window.close(), 3000);
+
+			var el = getElem('confirmNot');
+			el.onclick = closeTab();
+
+			function closeTab(){
+				if(num_question == 20){
+					score = 0;
+					num_question = 0;
+					mainFunction();
+					$('#closeModal').modal('hide');
+				} else if(num_question != 20){
+					$('#closeModal').modal('hide');
+				}
+			}
+			// screw it can't really figure out how to do this only once for now
+			// atleast it works for now :-)
+			var sub = getElem('submitMeA');
+			sub.onclick = function() {
+				if(c_ans == 'A'){
+					if(check(num_question)){
+						score++;
+						mainFunction();
+						$('#aModal').modal('hide');
+					}
+				} else{
+					mainFunction();
+					$('#aModal').modal('hide');
+				}
+			}
+
+			var sub = getElem('submitMeB');
+			sub.onclick = function() {
+				if(c_ans == 'B'){
+					if(check(num_question)){
+						score++;
+						mainFunction();
+						$('#bModal').modal('hide');
+					}
+				} else{
+					mainFunction();
+					$('#bModal').modal('hide');
+				}
+			}
+
+			var sub = getElem('submitMeC');
+			sub.onclick = function() {
+				if(c_ans == 'C'){
+					if(check(num_question)){
+						score++;
+						mainFunction();
+						$('#cModal').modal('hide');
+					}
+				} else{
+					mainFunction();
+					$('#cModal').modal('hide');
+				}
+			}
+
+			var sub = getElem('submitMeD');
+			sub.onclick = function() {
+				if(c_ans == 'D'){
+					++score;
+					mainFunction();
+					$('#dModal').modal('hide');
+				} else{
+					mainFunction();
+					$('#dModal').modal('hide');
+				}
+			}
+
+			var gen_quest = getElem('generate_question');
+			gen_quest.onclick = function() {
+				if(generated < 5 && num_question < 20){
+					score = score - 2;
+					generated++;
+					mainFunction();
+					$('#genModal').modal('hide');
+				}
+
+			}
+
+			var skip_quest = getElem('skip_quest');
+			skip_quest.onclick = function(){
+				if(skips < 5 && num_question < 20){
+					skips++;
+					mainFunction();
+					$('#skipModal').modal('hide');
+				}
+			}
+
+			playSound = function(){
+				
+			}
+		</script>
+	</body>
+</html>
