@@ -305,28 +305,32 @@
 
 					switch(c_ans){
 						case 'A':
+							clearAll();
 							getElem('A').value = ans.toFixed(1);
-							(getElem('B').value).toFixed(1) += ans + 1;
-							(getElem('C').value).toFixed(1) += ans + 1;
-							(getElem('D').value).toFixed(1) += ans + 1;
+							getElem('B').value = generateWrong1(ans);
+							getElem('C').value = generateWrong2(ans);
+							getElem('D').value = generateWrong(ans);
 							break;
 						case 'B':
+							clearAll();
 							getElem('B').value = ans.toFixed(1);
-							(getElem('A').value).toFixed(1) += ans + 1;
-							(getElem('C').value).toFixed(1) += ans + 1;
-							(getElem('D').value).toFixed(1) += ans + 1;
+							getElem('A').value = generateWrong1(ans);
+							getElem('C').value = generateWrong(ans);
+							getElem('D').value = generateWrong2(ans);
 							break;
 						case 'C':
+							clearAll();
 							getElem('C').value = ans.toFixed(1);
-							(getElem('B').value).toFixed(1) += ans + 1;
-							(getElem('A').value).toFixed(1) += ans + 1;
-							(getElem('D').value).toFixed(1) += ans + 1;
+							getElem('B').value = generateWrong2(ans);
+							getElem('A').value = generateWrong1(ans);
+							getElem('D').value = generateWrong(ans);
 							break;
 						case 'D':
+							clearAll();
 							getElem('D').value = ans.toFixed(1);
-							(getElem('B').value).toFixed(1) += ans + 1;
-							(getElem('C').value).toFixed(1) += ans + 1;
-							(getElem('A').value).toFixed(1) += ans + 1;
+							getElem('B').value = generateWrong(ans);
+							getElem('C').value = generateWrong1(ans);
+							getElem('A').value = generateWrong2(ans);
 							break;
 					}
 
@@ -336,6 +340,25 @@
 				} else {
 					mainFunction();
 				}
+			}
+			function clearAll(){
+				getElem('A').value = '';
+				getElem('B').value = '';
+				getElem('C').value = '';
+				getElem('D').value = '';
+			}
+
+			function generateWrong(ans){
+				var ret = ans * 2 + 4;
+				return ret.toFixed(1);
+			}
+			function generateWrong1(ans){
+				var ret = ans / 2 + 1;
+				return ret.toFixed(1);
+			}
+			function generateWrong2(ans){
+				var ret = ans + 2 - 1;
+				return ret.toFixed(1);
 			}
 
 			function isInt(n){
@@ -374,7 +397,7 @@
 					score = 0;
 					num_question = 0;
 					mainFunction();
-					$('#closeModal').modal('hide');
+					$('#closeModal').modal('show');
 				} else if(num_question != 20){
 					$('#closeModal').modal('hide');
 				}
@@ -437,11 +460,14 @@
 
 			var gen_quest = getElem('generate_question');
 			gen_quest.onclick = function() {
-				if(generated < 5 && num_question < 20){
+				if(generated < 3 && num_question < 20){
 					score = score - 2;
 					generated++;
+					console.log(generated);
 					mainFunction();
 					$('#genModal').modal('hide');
+				} else{
+					alert('Can no longer generate new questions.\nMaximum exceeded\nTry attempting a few :-)');
 				}
 
 			}
@@ -452,6 +478,8 @@
 					skips++;
 					mainFunction();
 					$('#skipModal').modal('hide');
+				} else {
+					alert('Can no longer generate skip questions.\nMaximum exceeded!!!\nTry answering a few :-)');
 				}
 			}
 
