@@ -1,5 +1,4 @@
 // TODO - code cleanup
-			// 		- fix minute bugs
 			// 		- look for work around to closing a tab in browser not opened by script
 			//		- modularization of code
 			//		- add sounds
@@ -7,7 +6,6 @@
 			// 		- add users and login system
 			// 		- add server in nodeJs
 			//		- level system
-			// 		- code optimization
 
 			// global variables
 			var counterTime = 10;
@@ -211,8 +209,7 @@
 					$('#closeModal').modal('hide');
 				}
 			}
-			// screw it can't really figure out how to do this only once for now
-			// atleast it works for now :-)
+			
 			var sub = getElem('submitMeA');
 			sub.onclick = function() {
 				if(c_ans == 'A'){
