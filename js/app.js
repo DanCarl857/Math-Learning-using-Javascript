@@ -11,7 +11,7 @@
 
 			// global variables
 			var counterTime = 10;
-			window.onload = initializeTimer(counterTime);
+			window.onload = initializeTimer(1);
 			var c_ans = "";
 			var score = 0;
 			var num_question = 0;
@@ -117,6 +117,7 @@
 					mainFunction();
 				}
 			}
+
 			function clearAll(){
 				getElem('A').value = '';
 				getElem('B').value = '';
@@ -157,6 +158,7 @@
 			}
 
 			function clockReset(){
+				StopTheClock();
 				initializeTimer(counterTime);
 				mainFunction();
 			}
@@ -184,7 +186,7 @@
 
 			function check(score){
 				if(num_question == 20){
-					$('#closeModal').modal('show');
+					hideModal("close");
 				}else{
 					return true;
 				}
@@ -201,10 +203,10 @@
 
 			function closeTab(){
 				if(num_question == 20){
+					$('#closeModal').modal('show');
+					clockReset();
 					score = 0;
 					num_question = 0;
-					mainFunction();
-					$('#closeModal').modal('show');
 				} else if(num_question != 20){
 					$('#closeModal').modal('hide');
 				}
@@ -216,12 +218,10 @@
 				if(c_ans == 'A'){
 					if(check(num_question)){
 						score++;
-						mainFunction();
-						$('#aModal').modal('hide');
+						hideModal("a");
 					}
 				} else{
-					mainFunction();
-					$('#aModal').modal('hide');
+					hideModal("a");
 				}
 			}
 
@@ -230,12 +230,10 @@
 				if(c_ans == 'B'){
 					if(check(num_question)){
 						score++;
-						mainFunction();
-						$('#bModal').modal('hide');
+						hideModal("b");
 					}
 				} else{
-					mainFunction();
-					$('#bModal').modal('hide');
+					hideModal("b");
 				}
 			}
 
@@ -244,12 +242,10 @@
 				if(c_ans == 'C'){
 					if(check(num_question)){
 						score++;
-						mainFunction();
-						$('#cModal').modal('hide');
+						hideModal("c");
 					}
 				} else{
-					mainFunction();
-					$('#cModal').modal('hide');
+					hideModal("c");
 				}
 			}
 
@@ -257,11 +253,9 @@
 			sub.onclick = function() {
 				if(c_ans == 'D'){
 					++score;
-					mainFunction();
-					$('#dModal').modal('hide');
+					hideModal("d");
 				} else{
-					mainFunction();
-					$('#dModal').modal('hide');
+					hideModal("d");
 				}
 			}
 
@@ -270,9 +264,7 @@
 				if(generated < 3 && num_question < 20){
 					score = score - 2;
 					generated++;
-					console.log(generated);
-					mainFunction();
-					$('#genModal').modal('hide');
+					hideModal("gen");
 				} else{
 					alert('Can no longer generate new questions.\nMaximum exceeded\nTry attempting a few :-)');
 				}
@@ -283,11 +275,16 @@
 			skip_quest.onclick = function(){
 				if(skips < 5 && num_question < 20){
 					skips++;
-					mainFunction();
-					$('#skipModal').modal('hide');
+					hideModal("skip");
 				} else {
 					alert('Can no longer generate skip questions.\nMaximum exceeded!!!\nTry answering a few :-)');
 				}
+			}
+
+			function hideModal(letter){
+				var str = "#" + letter + "Modal";
+				clockReset();
+				$(str).modal('hide');
 			}
 
 			playSound = function(){
