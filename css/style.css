@@ -22,14 +22,26 @@ body{
 #scoreTag{
 	position: relative;
 	float: left;
-	font-size: 35px;
+	font-size: 25px;
 	margin-bottom: 50px;
 }
 
 #level{
 	position: relative;
 	float: right;
-	font-size: 35px;
+	font-size: 25px;
+}
+
+#questAns {
+	position: relative;
+	float: left;
+	font-size: 25px;
+}
+
+#timerSlot{
+	position: relative;
+	float: left;
+	font-size: 25px;
 }
 
 .large_fonts{
