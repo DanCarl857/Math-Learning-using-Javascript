@@ -10,7 +10,8 @@
 			// 		- code optimization
 
 			// global variables
-			window.onload = initializeTimer(10);
+			var counterTime = 10;
+			window.onload = initializeTimer(counterTime);
 			var c_ans = "";
 			var score = 0;
 			var num_question = 0;
@@ -20,7 +21,6 @@
 			mainFunction = function(){
 				getElem('score').value = score;
 				num_question = num_question + 1;
-				initializeTimer(10);
 
 				getElem('QuestAns').value = num_question;
 
@@ -69,7 +69,7 @@
 
 
 				// if answer is not a floating point or an integer generate a new one
-				if(isFloat(ans) || isInt(ans) || isNaN(ans)){
+				if(isFloat(ans) || isInt(ans) || !isNaN(ans)){
 
 					console.log(ans);
 
@@ -147,13 +147,18 @@
 					StopTheClock();
 
 					//call mainFunction when timer is done.
-					mainFunction();
+					clockReset();
 				} else {
 					getElem('timer').innerHTML = secs + " secs";
 					secs = secs - 1;
 					timerRunning = true;
 					timerID = self.setTimeout("StartTheTimer()", delay); 
 				}
+			}
+
+			function clockReset(){
+				initializeTimer(counterTime);
+				mainFunction();
 			}
 
 			function generateWrong(ans){
