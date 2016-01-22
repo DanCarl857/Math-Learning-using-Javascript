@@ -1,20 +1,20 @@
-// TODO - code cleanup
-			// 		- look for work around to closing a tab in browser not opened by script
+// TODO -
 			//		- modularization of code
 			//		- add sounds
 			// 		- add effects
 			// 		- add users and login system
 			// 		- add server in nodeJs
 			//		- level system
+			//		- implement a pause button
 
 			// global variables
-			var counterTime = 10;
-			window.onload = initializeTimer(1);
-			var c_ans = "";
-			var score = 0;
-			var num_question = 0;
-			var skips = 0;
-			var generated = 0;
+			var counterTime = 10;						// number of seconds for each question
+			window.onload = initializeTimer(1);			// this is a workaround->start timer when page is loaded
+			var c_ans = "";								// variable to hold correct letter option
+			var score = 0;								// variable to keep hold of the score
+			var num_question = 0;						// variable to keep track of the number of questions
+			var skips = 0;								// variable to keep track of the number of questions skipped
+			var generated = 0;							// variable to keep track of the number of new question generated
 
 			mainFunction = function(){
 				getElem('score').value = score;
@@ -22,7 +22,8 @@
 
 				getElem('QuestAns').value = num_question;
 
-				console.log("Number of questions: " + num_question);
+				// uncomment this only during debugging
+				// console.log("Number of questions: " + num_question);
 
 				// exit modal info
 				getElem('endScore').innerHTML = score;
@@ -55,27 +56,18 @@
 				getElem('first_op').innerHTML = first_operand;
 				getElem('operator').innerHTML = op;
 				getElem('quest').innerHTML = second_operand;
-				//getElem('ans').innerHTML = "?";
 
-				var expr = String(first_operand);
-				expr = expr + String(op);
-				expr = expr + String(second_operand);
-
-				console.log(expr);
+				var expr = String(first_operand) + String(op) + String(second_operand);
 
 				var ans = eval(expr);
 
 
-				// if answer is not a floating point or an integer generate a new one
-				if(isFloat(ans) || isInt(ans) || !isNaN(ans)){
-
-					console.log(ans);
+				// if ans is invalid, generate a new question
+				if(isFinite(ans)){
 
 					//answers
 					var possible = "ABCD";
 					c_ans = possible.charAt(Math.floor(Math.random() * possible.length));
-
-					console.log(c_ans);
 
 					switch(c_ans){
 						case 'A':
@@ -112,9 +104,9 @@
 						closeTab();
 					}
 				} else {
-					mainFunction();
+					mainFunction(); // recursive call to generate a new question
 				}
-			}
+			} // end of mainFunction()
 
 			function clearAll(){
 				getElem('A').value = '';
@@ -174,17 +166,9 @@
 				return ret.toFixed(1);
 			}
 
-			function isInt(n){
-				return n === +n && n !== (n|0);
-			}
-
-			function isFloat(n){
-				return n === +n && n === (n|0);
-			}
-
 			function check(score){
 				if(num_question == 20){
-					hideModal("close");
+					$('#closeModal').modal('show');
 				}else{
 					return true;
 				}
@@ -199,16 +183,17 @@
 			var el = getElem('confirmNot');
 			el.onclick = closeTab();
 
-			function closeTab(){
-				if(num_question == 20){
+			/*function closeTab(){
+				if(num_question => 20){
 					$('#closeModal').modal('show');
-					clockReset();
+					setTimeout('getElem(e)', 10000);
 					score = 0;
 					num_question = 0;
+					clockReset();
 				} else if(num_question != 20){
 					$('#closeModal').modal('hide');
 				}
-			}
+			}*/
 			
 			var sub = getElem('submitMeA');
 			sub.onclick = function() {
@@ -282,8 +267,4 @@
 				var str = "#" + letter + "Modal";
 				clockReset();
 				$(str).modal('hide');
-			}
-
-			playSound = function(){
-				
 			}
