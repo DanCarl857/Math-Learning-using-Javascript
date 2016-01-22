@@ -8,7 +8,7 @@
 			//		- implement a pause button
 
 			// global variables
-			var counterTime = 10;						// number of seconds for each question
+			var counterTime = 20;						// number of seconds for each question
 			window.onload = initializeTimer(1);			// this is a workaround->start timer when page is loaded
 			var c_ans = "";								// variable to hold correct letter option
 			var score = 0;								// variable to keep hold of the score
@@ -28,8 +28,15 @@
 				// exit modal info
 				getElem('endScore').innerHTML = score;
 
-				start:
+				// call to function which carries alot of functionality
+				core();
+				
+			} // end of mainFunction()
 
+			// most of the core functionality 
+			// did this so I could work around a bug introduced by 
+			// generating a new question when the ans of the question generated is not a number
+			function core(){
 				if(score > 0 && score <= 5)
 					getElem('gradeScore').innerHTML = "F - Very Poor";
 				else if(score > 5 && score <= 10)
@@ -106,9 +113,9 @@
 						closeTab();
 					}
 				} else {
-					goto start;
+					core(); // recursive call to generate a new question if what is generated does not have a valid answer.
 				}
-			} // end of mainFunction()
+			}
 
 			// function to clear all the answer options
 			function clearAll(){
