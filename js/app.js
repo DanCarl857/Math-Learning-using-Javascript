@@ -28,6 +28,8 @@
 				// exit modal info
 				getElem('endScore').innerHTML = score;
 
+				start:
+
 				if(score > 0 && score <= 5)
 					getElem('gradeScore').innerHTML = "F - Very Poor";
 				else if(score > 5 && score <= 10)
@@ -104,10 +106,11 @@
 						closeTab();
 					}
 				} else {
-					mainFunction(); // recursive call to generate a new question
+					goto start;
 				}
 			} // end of mainFunction()
 
+			// function to clear all the answer options
 			function clearAll(){
 				getElem('A').value = '';
 				getElem('B').value = '';
@@ -120,6 +123,7 @@
 			var timerRunning = false;
 			var delay = 1000;
 
+			// function to initialize the timer
 			function initializeTimer(seconds){
 				// set the length of the timer in seconds
 				secs = seconds;
@@ -127,16 +131,16 @@
 				StartTheTimer();
 			}
 
+			// function to stop the timer
 			function StopTheClock(){
 				if(timerRunning)
 					clearTimeout(timerID);
 				timerRunning = false;
 			}
 
+			// function to start the timer
 			function StartTheTimer(){
 				if(secs == 0){
-					StopTheClock();
-
 					//call mainFunction when timer is done.
 					clockReset();
 				} else {
@@ -147,12 +151,15 @@
 				}
 			}
 
+			// function to reset or start timer after each question 
+			// or on quit
 			function clockReset(){
 				StopTheClock();
 				initializeTimer(counterTime);
 				mainFunction();
 			}
 
+			// functions to generate wrong ans
 			function generateWrong(ans){
 				var ret = ans * 2 + 4;
 				return ret.toFixed(1);
@@ -166,8 +173,10 @@
 				return ret.toFixed(1);
 			}
 
+			// function to show the closing modal at the end of the game
 			function check(score){
 				if(num_question == 20){
+					StopTheClock();
 					$('#closeModal').modal('show');
 				}else{
 					return true;
@@ -183,18 +192,19 @@
 			var el = getElem('confirmNot');
 			el.onclick = closeTab();
 
-			/*function closeTab(){
+			function closeTab(){
 				if(num_question => 20){
-					$('#closeModal').modal('show');
-					setTimeout('getElem(e)', 10000);
+					StopTheClock();
 					score = 0;
 					num_question = 0;
-					clockReset();
-				} else if(num_question != 20){
+					skips = 0;
+					generated = 0;
+					hideModal('close');
+				} else if(num_question < 20){
 					$('#closeModal').modal('hide');
 				}
-			}*/
-			
+			}
+
 			var sub = getElem('submitMeA');
 			sub.onclick = function() {
 				if(c_ans == 'A'){
