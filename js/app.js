@@ -9,7 +9,7 @@
 
 			// global variables
 			var counterTime = 20;						// number of seconds for each question
-			window.onload = initializeTimer(0);			// this is a workaround->start timer when page is loaded
+			window.onload = initializeTimer(1);			// this is a workaround->start timer when page is loaded
 			var c_ans = "";								// variable to hold correct letter option
 			var score = 0;								// variable to keep hold of the score
 			var num_question = 0;						// variable to keep track of the number of questions
@@ -21,6 +21,7 @@
 				num_question = num_question + 1;
 
 				getElem('QuestAns').value = num_question;
+				getElem('questionsAns').innerHTML = num_question;
 
 				// uncomment this only during debugging
 				// console.log("Number of questions: " + num_question);

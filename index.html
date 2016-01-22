@@ -156,7 +156,7 @@
 			</div>
 
 			<div class="row" id="page_bottom" style="font-size: 35px;">
-				<span style="margin-left: 80px"><button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#closeModal">EXIT</button></span>
+				<span style="margin-left: 110px"><button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#closeModal">EXIT</button></span>
 
 				<!-- Modal -->
 				<div id="closeModal" class="modal fade" role="dialog" style="font-size: 20px;">
@@ -168,8 +168,9 @@
 								<h3 class="modal-title">Math-Learning Platform</h3>
 							</div>
 							<div class="modal-body">
-								<strong>GAME OVER</strong><br />
+								<strong>GAME PAUSED | OVER</strong><br />
 								Your Score: <span id="endScore"></span><br />
+								Number of questions answered: <span id="questionsAns" style="color: blue"></span><br />
 								Grade: <span id="gradeScore"></span><br />
 								Will you <span style="color: rgb(46, 200, 102)">Play Again</span> or <span style="color: red">exit</span>?
 							</div>
@@ -203,7 +204,7 @@
 				</div>
 
 				<input type="text" size="1" placeholder="  ?" disabled id="skipQuest"></span><span> / 5</span>
-				<span style="margin-left: 80px"><button type="button" data-toggle="modal" data-target="#genModal" class="btn btn-success btn-lg">Generate New Question</button></span><span style="margin-left: 10px"><input type="text" size="1" placeholder="  ?" disabled id="generateQ"></span><span> / 3</span>
+				<span style="margin-left: 130px"><button type="button" data-toggle="modal" data-target="#genModal" class="btn btn-success btn-lg">Generate New Question</button></span><span style="margin-left: 30px"><input type="text" size="1" placeholder="  ?" disabled id="generateQ"></span><span> / 3</span>
 
 				<!-- Modal -->
 				<div id="genModal" class="modal fade" role="dialog" style="font-size: 20px">
