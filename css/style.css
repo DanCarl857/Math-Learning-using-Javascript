@@ -32,6 +32,11 @@ body{
 	font-size: 25px;
 }
 
+#timer{
+	font-weight: bold;
+	font-size: 40px;
+}
+
 #questAns {
 	position: relative;
 	float: left;

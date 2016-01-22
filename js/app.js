@@ -9,6 +9,8 @@
 
 			// global variables
 			var counterTime = 20;						// number of seconds for each question
+
+			// Shit!!!!!!this seems to mess up my timer
 			window.onload = initializeTimer(1);			// this is a workaround->start timer when page is loaded
 			var c_ans = "";								// variable to hold correct letter option
 			var score = 0;								// variable to keep hold of the score
@@ -16,6 +18,7 @@
 			var skips = 0;								// variable to keep track of the number of questions skipped
 			var generated = 0;							// variable to keep track of the number of new question generated
 
+			// the big boss
 			mainFunction = function(){
 				getElem('score').value = score;
 				num_question = num_question + 1;
@@ -71,8 +74,8 @@
 
 				var ans = eval(expr);
 
-
 				// if ans is invalid, generate a new question
+				// shit should have used this sooner
 				if(isFinite(ans)){
 
 					//answers
