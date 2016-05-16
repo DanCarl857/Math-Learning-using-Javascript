@@ -1,240 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="MLP" class="fullBody">
 	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Math-Learning Platform</title>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="stylesheet" type="text/css" href="css/materialize.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/ionicons.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/animate.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<title>MLP - Bring Learning to kids</title>
 	</head>
-	<body onload=mainFunction()>
-		<div class="container" id="body">
+	<body class="fullBody container" ng-controller="mainCtrl">
 
-			<div class="row" id="page_heading">
-				<div class="col-md-3" id="scoreTag">
-					<span>SCORE :</span> 
-					<input type="text" size="2" id="score" placeholder="  ?" disabled><span> / 20pts</span>
-				</div>
-
-				<div class="col-md-3" id="questAns" style="color: blue">
-					<span>Quest :</span><span></span>
-					<input type="text" size="2" id="QuestAns" placeholder="  ?" disabled><span> / 20</span>
-				</div>
-
-				<div class="col-md-3" id="timerSlot" style="color: red">
-					<span>TIME :</span><span id="timer"></span>
-				</div>
-				
-				<div class="col-md-3" id="level">
-					<span>LEVEL :</span><span> 2- Advanced Beginner</span>
-				</div>
-			</div>
-
-			<div class="row" id="main_body">
-				<div class="col-md-12" id="main_event">
-					<div class="row" id="question">
-						<div class="col-md-2 large_fonts">
-							<span style="border: 2px solid grey;" id="first_op"></span>
-						</div>
-						<div class="col-md-2 large_fonts">
-							<span style="border: 2px solid grey;" id="operator"></span>
-						</div>
-						<div class="col-md-2 large_fonts">
-							<span style="border: 2px solid grey;" id="quest"></span>
-						</div>
-						<div class="col-md-2 large_fonts">
-							<span id="eq" style="border: 1px solid grey;"> =</span>
-							<span style="border: 2px solid red;" id="ans"></span>
-						</div>
-					</div>
-
-
-					<div class="row" id="ans" style="font-size: 35px; text-align: center;margin-bottom: 30px;margin-top: 40px;">
-						<span style="position: relative; left: 5%;">Choose an answer: </span><br>
-						  <button type="button" class="btn btn-info btn-lg" style="margin-left: 10px" data-toggle="modal" data-target="#aModal">A</button>
-
-						  <!-- Modal -->
-						<div id="aModal" class="modal fade" role="dialog" style="font-size: 20px;">
-							<div class="modal-dialog">
-								<!-- Modal content -->
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h3 class="modal-title">Math-Learning Platform</h3>
-									</div>
-									<div class="modal-body">
-										You choose <span style="color: blue">A.</span> Submit as answer?
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-primary" data-dismiss="modal">No, Changed my Mind</button>
-										<button type="button" class="btn btn-warning" id="submitMeA">Yes, Submit</button>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						  <input type="text" size="3" placeholder="  3" disabled id="A" name="A">
-						  <button type="button" class="btn btn-info btn-lg" style="margin-left: 10px" data-toggle="modal" data-target="#bModal">B</button>
-
-						   <!-- Modal -->
-						<div id="bModal" class="modal fade" role="dialog" style="font-size: 20px;">
-							<div class="modal-dialog">
-								<!-- Modal content -->
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h3 class="modal-title">Math-Learning Platform</h3>
-									</div>
-									<div class="modal-body">
-										You choose <span style="color: blue">B.</span> Submit as answer?
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-primary" data-dismiss="modal">No, Changed my Mind</button>
-										<button type="button" class="btn btn-warning" id="submitMeB">Yes, Submit</button>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						  <input type="text" size="3"  placeholder="  6" disabled id="B" name="B">
-						  <button type="button" class="btn btn-info btn-lg" style="margin-left: 10px" data-toggle="modal" data-target="#cModal">C</button>
-
-						  <!-- Modal -->
-						<div id="cModal" class="modal fade" role="dialog" style="font-size: 20px;">
-							<div class="modal-dialog">
-								<!-- Modal content -->
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h3 class="modal-title">Math-Learning Platform</h3>
-									</div>
-									<div class="modal-body">
-										You choose <span style="color: blue">C.</span> Submit as answer?
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-primary" data-dismiss="modal">No, Changed my Mind</button>
-										<button type="button" class="btn btn-warning" id="submitMeC">Yes, Submit</button>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						  <input type="text" size="3" placeholder="  7" disabled id="C" name="C">
-						  <button type="button" class="btn btn-info btn-lg" style="margin-left: 10px" data-toggle="modal" data-target="#dModal">D</button>
-
-						  <!-- Modal -->
-						<div id="dModal" class="modal fade" role="dialog" style="font-size: 20px;">
-							<div class="modal-dialog">
-								<!-- Modal content -->
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h3 class="modal-title">Math-Learning Platform</h3>
-									</div>
-									<div class="modal-body">
-										You choose <span style="color: blue">D.</span> Submit as answer?
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-primary" data-dismiss="modal">No, Changed my Mind</button>
-										<button type="button" class="btn btn-warning" id="submitMeD">Yes, Submit</button>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						  <input type="text" size="3" placeholder="  8" disabled id="D" name="D">
+    <div class="robotoReg" ui-view>
+    	<div class="container row">
+    		<form class="smBox">
+    			  <div class="row">
+			        <div class="input-field col s6">
+			          <input id="first_name" type="text" class="validate">
+			          <label for="first_name" data-error="wrong" data-success="right">First Name</label>
+			        </div>
+			        <div class="input-field col s6">
+			          <input id="last_name" type="text" class="validate">
+			          <label for="last_name" data-error="wrong" data-success="right">Last Name</label>
+			        </div>
+			      </div>
+			      <div class="row">
+			        <div class="input-field col s12">
+			          <input id="username" type="text" class="validate">
+			          <label for="username" data-error="wrong" data-success="right">Username</label>
+			        </div>
+			      </div>
+			      <div class="row input-field col s12">
+			      	<select>
+			      		<option value="eng">English</option>
+			      		<option value="Math">Maths</option>
+			      	</select>
+			      	<label data-error="wrong" data-success="right">What do you want to learn...</label>
+			      </div>
+			      <div class="row input-field col s12">
+			      	<select>
+			      		<option value="1">1</option>
+			      		<option value="2">2</option>
+			      		<option value="3">3</option>
+			      	</select>
+			      	<label data-error="wrong" data-success="right">What level will you like to attempt...</label>
+			      </div>
+			      <div class="row">
+			        <div class="input-field col s12">
+			          <input id="email" type="email" class="validate">
+			          <label for="email" data-error="wrong" data-success="right">Email</label>
+			        </div>
+			      </div>
+			      <div class="row">
+					<div class="col s12">
+						<button class="left btn grey lighten-4 colorGrey waves-effect waves-light push-s4 outlineGrey" type="reset">Cancel
+						<i class="icon ion-ios-close-empty left"></i>
+						</button>
+						<a href="#/main"><button class="right btn bgBlue waves-effect waves-light pull-s4" type="submit">Play Game
+						<i class="icon ion-ios-play right"></i>
+						</button>
+						</a>
 				</div>
 			</div>
+			<center><span class="smlText colorGrey robotoReg">Designed by d1n3sh</span></center>
+    		</form>
+    	</div>
+    </div>
 
-			<div class="row" id="page_bottom" style="font-size: 35px;">
-				<span style="margin-left: 110px"><button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#closeModal">EXIT</button></span>
-
-				<!-- Modal -->
-				<div id="closeModal" class="modal fade" role="dialog" style="font-size: 20px;">
-					<div class="modal-dialog">
-						<!-- Modal content -->
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h3 class="modal-title">Math-Learning Platform</h3>
-							</div>
-							<div class="modal-body">
-								<strong>GAME PAUSED | OVER</strong><br />
-								Your Score: <span id="endScore"></span><br />
-								Number of questions answered: <span id="questionsAns" style="color: blue"></span><br />
-								<span style="blue" blink>Grade: </span><span id="gradeScore"></span><br />
-								Will you <span style="color: rgb(46, 200, 102)">Play Again</span> or <span style="color: red">exit</span>?
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-success" id="confirmNot" data-dismiss="modal">No, Play Again</button>
-								<button type="button" class="btn btn-danger" id="finito">Yes, Exit</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<span style="margin-left: 80px"><button type="button" data-toggle="modal" data-target="#skipModal" class="btn btn-warning btn-lg">Skip this question</button></span><span style="margin-left: 10px">
-
-				<!-- Modal -->
-				<div id="skipModal" class="modal fade" role="dialog" style="font-size: 20px">
-					<div class="modal-dialog">
-						<!-- Modal content -->
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h3 class="modal-title">Math-Learning Platform</h3>
-							</div>
-							<div class="modal-body">
-								Are you sure u want to skip this question?
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-info" data-dismiss="modal">No, Return to Question</button>
-								<button type="button" class="btn btn-primary" id="skip_quest">Yes, Skip</button>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<input type="text" size="1" placeholder="  ?" disabled id="skipQuest"></span><span> / 5</span>
-				<span style="margin-left: 130px"><button type="button" data-toggle="modal" data-target="#genModal" class="btn btn-success btn-lg">Generate New Question</button></span><span style="margin-left: 30px"><input type="text" size="1" placeholder="  ?" disabled id="generateQ"></span><span> / 3</span>
-
-				<!-- Modal -->
-				<div id="genModal" class="modal fade" role="dialog" style="font-size: 20px">
-					<div class="modal-dialog">
-						<!-- Modal content -->
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h3 class="modal-title">Math-Learning Platform</h3>
-							</div>
-							<div class="modal-body">
-								Are you sure u want to generate a new question? <br />
-								This will cost you <span style="color: red">2 points!!</span>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-primary" data-dismiss="modal">No, Return to Question</button>
-								<button type="button" class="btn btn-warning" id="generate_question">Yes, Generate New</button>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!--<span style="margin-left: 60px"><button type="button" id="submitBtn" class="btn btn-primary btn-lg">Submit Answer</button></span> -->
-			</div>
-			<div id="embed"></div>
-		</div>
-
-
-		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/app.js"></script>
+    <script src="js/jquery-2.1.4.min.js" ></script>
+    <script src="js/angular.min.js" ></script>
+    <script src="js/angular-ui-router.min.js" ></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/ionic.min.js"></script>
+    <script src="js/materialize.min.js"></script>   
+	<script src="js/app.js" ></script>
 	</body>
+
 </html>
