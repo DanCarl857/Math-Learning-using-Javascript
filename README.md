@@ -9,6 +9,6 @@ ToDO:
   - Build Ionic App
   - Cleanup and optimize code
   - Add more levels
-  - Add NodeJS server
+  - Code server with Java
   - Add mongoDB server
   - Unit tests
